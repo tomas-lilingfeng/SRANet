@@ -46,7 +46,7 @@ class Dataset(Dataset):
     
 
     def __init__(self ,mode='train',transformer=False):
-        datacsv=pd.read_csv('/data1/llf/gutou/Temporal-Channel/splitdataTrainvalidTest.csv')
+        datacsv=pd.read_csv('/data1/dataset/splitdataTrainvalidTest.csv')
 
         mode2mod={'train':'isTraindata','valid':'isValiddata','test':'isTestdata'}
 
@@ -56,7 +56,6 @@ class Dataset(Dataset):
         self.KEYS=('image','mask')
         
         
-        copynum=20 #  对于训练集中分错的样本，重采样倍数
         
         mod=mode2mod[self.mode]
         
@@ -150,10 +149,10 @@ class Dataset(Dataset):
 
         plug_name = self.plug_names[index]
         
-        plug_name=os.path.join('/data1/llf/gutou/Temporal-Channel/dataset/ct_box_3d_128_clip_npy/',plug_name.split('/')[-1])
+        plug_name=os.path.join('/data1/dataset/ct_box_3d_128_clip_npy/',plug_name.split('/')[-1])
         
         if self.mode=='train':
-            maskpath=os.path.join('/data1/llf/gutou/MIL_MNIST/AttentionDeepMIL-master/masks',plug_name.split('/')[-1])
+            maskpath=os.path.join('/data1/dataset/masks',plug_name.split('/')[-1])
         else:
             maskpath=plug_name
             
